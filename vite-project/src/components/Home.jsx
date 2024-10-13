@@ -1,18 +1,35 @@
-import { data } from "./data";
 import EachVideo from "./EachVideo";
 import { useContext, useState } from 'react';
 import { SearchContext } from '../utils/SearchAndSidebarContext';
 import { SideBarContext } from '../utils/SearchAndSidebarContext';
 import Sidebar from "./Sidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchVideos } from "../utils/videoSlice.js";
+import { useEffect } from "react";
 
 function Home() {
 
   const { searchQuery, setSearchQuery } = useContext(SearchContext);
   const { isSidebarOpen } = useContext(SideBarContext);
   const [showMore, setShowMore] = useState(false); // State to toggle more buttons
+  
+  const dispatch = useDispatch();
+  const {videos, loading, error} = useSelector(state => state.video);
+
+  useEffect(() => {
+    dispatch(fetchVideos())
+  });
+
+  if(loading) {
+    return <p>loading ...</p>
+  }
+
+  if(error) {
+    return <p>loading ...</p>
+  }
 
   // Filter data based on the search query
-  const filteredData = data.filter(item =>
+  const filteredData = videos.filter(item =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
