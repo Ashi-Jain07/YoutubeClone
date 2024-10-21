@@ -80,8 +80,8 @@ function CreateChannel() {
                     <form className="flex flex-col items-center" enctype="multipart/form-data">
                         <img src={previewImage} className="rounded-full w-36 h-36"></img>
                         <input type="file" accept=".png, .jpg, .jpeg" onChange={handleImageChange} className="mb-5" required ></input>
-                        <input type="text" value={name} className="border border-black p-2 m-2 w-72 h-10 rounded-md" onChange={(e) => setName(e.target.value)} required ></input>
-                        <input type="text" value={handle} className="border border-black p-2 m-2 w-72 h-10 rounded-md" onChange={(e) => setHandle(e.target.value)} required ></input>
+                        <input type="text" value={name} placeholder="Your Name" className="border border-black p-2 m-2 w-72 h-10 rounded-md" onChange={(e) => setName(e.target.value)} required ></input>
+                        <input type="text" value={handle} placeholder="Handle Name" className="border border-black p-2 m-2 w-72 h-10 rounded-md" onChange={(e) => setHandle(e.target.value)} required ></input>
                         <div className="flex m-5">
                             <button className="border border-black px-3 py-2 rounded-md text-xl mr-6" onClick={(e) => handleSubmit(e)}>Create Channel</button>
                             <button className="border border-black px-3 py-2 rounded-md text-xl" onClick={handleCancel}>Cancel</button>

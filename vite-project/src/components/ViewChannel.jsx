@@ -176,74 +176,77 @@ function ViewChannel() {
                         </div>
                         <div>
                             <h1 className="text-center text-2xl mt-10 font-semibold">Your Videos</h1>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md2:grid-cols-3 place-items-center sm:m-5 mt-10">
-                                {
-                                    showVideo.map(data => (
-                                        <div key={data._id} className="m-5">
-                                            <iframe src={data.url} width="300px" height="200px" />
-                                            <div>
+                            {showVideo.length > 0 ?
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md2:grid-cols-3 place-items-center sm:m-5 mt-10">
+                                    {
+                                        showVideo.map(data => (
+                                            <div key={data._id} className="m-5">
+                                                <iframe src={data.url} width="300px" height="200px" />
                                                 <div>
-                                                    {editIndex === data._id ? (
-                                                        <div>
-                                                            {/* Show input fields for editing */}
-                                                            <input
-                                                                type="text"
-                                                                value={editTitle}
-                                                                onChange={(e) => setEditTitle(e.target.value)}
-                                                                placeholder={data.title}
-                                                                className="border border-black rounded-md w-52 h-8 text-xl p-1 m-2"
-                                                            />
-                                                            <input
-                                                                type="text"
-                                                                value={editDescription}
-                                                                onChange={(e) => setEditDescription(e.target.value)}
-                                                                placeholder={data.description}
-                                                                className="border border-black rounded-md w-52 h-8 text-xl p-1 m-2"
-                                                            />
-                                                            <input
-                                                                type="text"
-                                                                value={editCategory}
-                                                                onChange={(e) => setEditCategory(e.target.value)}
-                                                                placeholder={data.category}
-                                                                className="border border-black rounded-md w-52 h-8 text-xl p-1 m-2"
-                                                            />
-                                                            <input
-                                                                type="text"
-                                                                value={editUrl}
-                                                                onChange={(e) => setEditUrl(e.target.value)}
-                                                                placeholder={data.url}
-                                                                className="border border-black rounded-md w-52 h-8 text-xl p-1 m-2"
-                                                            /><br />
-                                                            <button
-                                                                onClick={() => handleEditVideo(filteredData._id, data._id)}
-                                                                className="border border-black bg-slate-100 px-2 py-1 rounded-md m-2 mt-5"
-                                                            >
-                                                                Save
-                                                            </button>
-                                                            <button onClick={() => setEditIndex(null)} className="border border-black bg-slate-100 p-1 rounded-md mt-5">Cancel</button>
-                                                        </div>
-                                                    ) : (
-                                                        <>
-                                                            {/* Display video details */}
-                                                            <h1 className="text-xl font-semibold">{data.title}</h1>
-                                                            <p className="text-xl">{data.description}</p>
-                                                            <p className="text-xl">{data.category}</p>
-                                                        </>
-                                                    )}
-                                                </div>
-                                                <div>
-                                                    {editIndex == data._id ?
-                                                        <></>
-                                                        :
-                                                        <button className="border border-black bg-slate-100 px-2 py-1 rounded-md m-1 mt-2" onClick={() => setEditIndex(data._id)} >Edit </button>
-                                                    }
-                                                    <button className="border border-black bg-slate-100 px-2 py-1 rounded-md m-1 mt-2" onClick={() => handleDeleteVideo(filteredData._id, data._id)}>delete</button>
+                                                    <div>
+                                                        {editIndex === data._id ? (
+                                                            <div>
+                                                                {/* Show input fields for editing */}
+                                                                <input
+                                                                    type="text"
+                                                                    value={editTitle}
+                                                                    onChange={(e) => setEditTitle(e.target.value)}
+                                                                    placeholder={data.title}
+                                                                    className="border border-black rounded-md w-52 h-8 text-xl p-1 m-2"
+                                                                />
+                                                                <input
+                                                                    type="text"
+                                                                    value={editDescription}
+                                                                    onChange={(e) => setEditDescription(e.target.value)}
+                                                                    placeholder={data.description}
+                                                                    className="border border-black rounded-md w-52 h-8 text-xl p-1 m-2"
+                                                                />
+                                                                <input
+                                                                    type="text"
+                                                                    value={editCategory}
+                                                                    onChange={(e) => setEditCategory(e.target.value)}
+                                                                    placeholder={data.category}
+                                                                    className="border border-black rounded-md w-52 h-8 text-xl p-1 m-2"
+                                                                />
+                                                                <input
+                                                                    type="text"
+                                                                    value={editUrl}
+                                                                    onChange={(e) => setEditUrl(e.target.value)}
+                                                                    placeholder={data.url}
+                                                                    className="border border-black rounded-md w-52 h-8 text-xl p-1 m-2"
+                                                                /><br />
+                                                                <button
+                                                                    onClick={() => handleEditVideo(filteredData._id, data._id)}
+                                                                    className="border border-black bg-slate-100 px-2 py-1 rounded-md m-2 mt-5"
+                                                                >
+                                                                    Save
+                                                                </button>
+                                                                <button onClick={() => setEditIndex(null)} className="border border-black bg-slate-100 p-1 rounded-md mt-5">Cancel</button>
+                                                            </div>
+                                                        ) : (
+                                                            <>
+                                                                {/* Display video details */}
+                                                                <h1 className="text-xl font-semibold">{data.title}</h1>
+                                                                <p className="text-xl">{data.description}</p>
+                                                                <p className="text-xl">{data.category}</p>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                    <div>
+                                                        {editIndex == data._id ?
+                                                            <></>
+                                                            :
+                                                            <button className="border border-black bg-slate-100 px-2 py-1 rounded-md m-1 mt-2" onClick={() => setEditIndex(data._id)} >Edit </button>
+                                                        }
+                                                        <button className="border border-black bg-slate-100 px-2 py-1 rounded-md m-1 mt-2" onClick={() => handleDeleteVideo(filteredData._id, data._id)}>delete</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
+                                        ))
+                                    }
+                                </div> :
+                                <p className="text-center text-xl mt-10 mb-10">No video created yet </p>
+                            }
                         </div>
                     </div> :
                     <div className="text-center mt-40 font-semibold text-2xl">
