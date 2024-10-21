@@ -11,6 +11,7 @@ function CreateChannel() {
     const [name, setName] = useState("");
     const [handle, setHandle] = useState("");
 
+    const Token = JSON.parse(localStorage.getItem("accessToken"));
     const navigate = useNavigate();
 
     //setImage to url of uploaded image
@@ -28,6 +29,7 @@ function CreateChannel() {
     //Api for add channel
     async function handleSubmit(e) {
         e.preventDefault();
+        const token = Token.token;
         console.log("submitted");
 
         try {
@@ -36,7 +38,8 @@ function CreateChannel() {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                     authorization: `JWT ${token}`
                 },
                 body: JSON.stringify({
                     image,

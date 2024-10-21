@@ -2,7 +2,7 @@ import { addChannel, addVideo, deleteChannel, deleteVideo, editVideo, viewChanne
 import {verifyUser} from "../middleware/verifyUser.js"
 
 export function channelRoutes(app) {
-    app.post("/addchannel", addChannel);
+    app.post("/addchannel", verifyUser, addChannel);
     app.get("/channels", viewChannel);
     app.delete("/deletechannel/:id", deleteChannel);
     app.patch("/addVideo/:id", verifyUser, addVideo);
