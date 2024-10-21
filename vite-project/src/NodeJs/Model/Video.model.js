@@ -13,15 +13,7 @@ const VideoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    thumbnail: {
-        type: String,
-        required: true
-    },
     category: {
-        type: String,
-        required: true
-    },
-    duration: {
         type: String,
         required: true
     },
@@ -30,7 +22,7 @@ const VideoSchema = new mongoose.Schema({
         required: true
     },
     views: {
-        type: Number,
+        type: String,
         required: true
     },
     likes: {
@@ -41,6 +33,10 @@ const VideoSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    comments: [{
+        firstName: String,
+        comment: String
+    }],
 });
 
 const VideoModel = mongoose.model("VideoModel", VideoSchema);

@@ -8,7 +8,12 @@ export default {
     extend: {
       width: {
         '104': '600px'
-      }
+      },
+    screens: {
+      'md2': '890px',
+      'lsm': '475px',
+      'lg+': '1145px'
+    }
     },
   },
   plugins: [],

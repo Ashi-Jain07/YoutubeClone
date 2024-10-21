@@ -4,6 +4,7 @@ export const SideBarContext = createContext();
 
 export const SearchContext = createContext();
 
+//Create a context for searchbar
 export function SearchProvider({ children }) {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -14,6 +15,7 @@ export function SearchProvider({ children }) {
   );
 };
 
+//Create a context for sidebar
 export function SideBarProvider({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 

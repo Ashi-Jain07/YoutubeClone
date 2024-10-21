@@ -23,7 +23,7 @@ function Login() {
     async function handleLogin(e) {
         try {
             e.preventDefault();
-            const response = await fetch("http://localhost:5100/loginUser", {
+            const response = await fetch("http://localhost:5500/login", {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
@@ -52,7 +52,7 @@ function Login() {
             alert("Login successfully");
 
             setTimeout(() => {
-                navigate("/cart");
+                navigate("/");
                 window.location.reload()
             }, 100);
 
@@ -70,7 +70,7 @@ function Login() {
                     {isSidebarOpen && <Sidebar />}
                 </div>
                 <div className={isSidebarOpen ? "ml-64" : undefined}>
-                    <h1 className="text-center text-5xl font-bold mt-10">Login</h1>
+                    <h1 className="text-center text-5xl font-bold mt-16">Login</h1>
                     <div className="flex justify-center mt-10">
                         <form>
                             <input type="email" placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} className="w-80 p-2 h-10 m-4 border-b-2 border-black text-xl" required></input><br />
